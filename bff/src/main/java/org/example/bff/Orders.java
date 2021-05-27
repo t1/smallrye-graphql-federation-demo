@@ -1,15 +1,14 @@
-package org.example.orderPrinter;
+package org.example.bff;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
-import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-@Dependent
+@Path("/orders")
 public class Orders {
     @Path("/orders")
     @RegisterRestClient(configKey = "order-api")
@@ -28,7 +27,8 @@ public class Orders {
     @Inject @RestClient OrderApi orders;
     @Inject @RestClient ProductApi products;
 
-    Order order(String id) {
+    @GET @Path("/{id}")
+    public Order order(@PathParam("id") String id) {
         var order = orders.order(id);
         for (var orderItem : order.getOrderItems())
             orderItem.setProduct(products.product(orderItem.getProductId()));

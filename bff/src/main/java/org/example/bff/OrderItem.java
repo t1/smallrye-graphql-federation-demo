@@ -1,4 +1,4 @@
-package org.example.orderPrinter;
+package org.example.bff;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,9 +8,6 @@ import lombok.experimental.SuperBuilder;
 public class OrderItem {
     private Integer position;
     private Integer amount;
+    private String productId;
     private Product product;
-
-    public long getTotalPrice() {
-        return amount * product.getPrice();
-    }
 }

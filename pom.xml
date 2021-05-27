@@ -12,6 +12,7 @@
     <modules>
         <module>product</module>
         <module>order</module>
+        <module>bff</module>
         <module>printer</module>
     </modules>
 
