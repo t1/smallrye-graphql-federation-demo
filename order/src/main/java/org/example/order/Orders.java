@@ -1,14 +1,14 @@
 package org.example.order;
 
-import javax.ws.rs.GET;
+import org.eclipse.microprofile.graphql.GraphQLApi;
+import org.eclipse.microprofile.graphql.Query;
+
 import javax.ws.rs.NotFoundException;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-@Path("/orders")
+@GraphQLApi
 public class Orders {
     private static final Map<String, Order> ORDERS = new HashMap<>();
 
@@ -37,8 +37,8 @@ public class Orders {
         ORDERS.put(order.getId(), order);
     }
 
-    @GET @Path("/{id}")
-    public Order order(@PathParam("id") String id) {
+    @Query
+    public Order order(String id) {
         var order = ORDERS.get(id);
         if (order == null)
             throw new NotFoundException("order " + id + " not found");

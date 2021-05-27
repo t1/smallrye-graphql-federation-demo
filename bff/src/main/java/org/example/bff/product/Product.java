@@ -1,4 +1,4 @@
-package org.example.bff;
+package org.example.bff.product;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

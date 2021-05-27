@@ -1,13 +1,13 @@
 package org.example.product;
 
-import javax.ws.rs.GET;
+import org.eclipse.microprofile.graphql.GraphQLApi;
+import org.eclipse.microprofile.graphql.Query;
+
 import javax.ws.rs.NotFoundException;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import java.util.HashMap;
 import java.util.Map;
 
-@Path("/products")
+@GraphQLApi
 public class Products {
     private static final Map<String, Product> PRODUCTS = new HashMap<>();
 
@@ -20,8 +20,8 @@ public class Products {
         PRODUCTS.put(product.getId(), product);
     }
 
-    @GET @Path("/{id}")
-    public Product product(@PathParam("id") String id) {
+    @Query
+    public Product product(String id) {
         var product = PRODUCTS.get(id);
         if (product == null)
             throw new NotFoundException("product " + id + " not found");

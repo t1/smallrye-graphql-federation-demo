@@ -1,4 +1,4 @@
-package org.example.bff;
+package org.example.bff.order;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,5 +9,4 @@ public class OrderItem {
     private Integer position;
     private Integer amount;
     private String productId;
-    private Product product;
 }

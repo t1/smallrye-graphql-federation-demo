@@ -2,25 +2,21 @@ package org.example.orderPrinter;
 
 import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
-import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
+import io.smallrye.graphql.client.typesafe.api.GraphQLClientApi;
+import org.eclipse.microprofile.graphql.Query;
 
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import java.util.stream.Stream;
 
 @QuarkusMain
 public class PrintCommand implements QuarkusApplication {
-    @Path("/orders")
-    @RegisterRestClient(configKey = "order-api")
-    public interface OrderApi {
-        @GET @Path("/{id}")
-        Order order(@PathParam("id") String id);
+    @GraphQLClientApi(configKey = "order-api")
+    public interface Orders {
+        @Query
+        Order order(String id);
     }
 
-    @Inject @RestClient OrderApi orders;
+    @Inject Orders orders;
 
     @Override
     public int run(String... orderIds) {
