@@ -12,4 +12,5 @@
     </parent>
 
     <artifactId>order</artifactId>
+    <packaging>war</packaging>
 </project>

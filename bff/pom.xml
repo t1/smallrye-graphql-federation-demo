@@ -12,4 +12,5 @@
     </parent>
 
     <artifactId>bff</artifactId>
+    <packaging>war</packaging>
 </project>
