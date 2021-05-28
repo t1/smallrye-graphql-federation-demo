@@ -2,6 +2,7 @@ package org.example.order;
 
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Query;
+import org.eclipse.microprofile.graphql.Source;
 
 import javax.ws.rs.NotFoundException;
 import java.time.LocalDate;
@@ -43,5 +44,9 @@ public class Orders {
         if (order == null)
             throw new NotFoundException("order " + id + " not found");
         return order;
+    }
+
+    public Product product(@Source OrderItem orderItem) {
+        return new Product(orderItem.getProductId());
     }
 }
