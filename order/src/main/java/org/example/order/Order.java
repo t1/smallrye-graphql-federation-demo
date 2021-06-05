@@ -1,6 +1,6 @@
 package org.example.order;
 
-import io.smallrye.graphql.federation.api.Key;
+import io.smallrye.graphql.api.federation.Key;
 import lombok.Data;
 import lombok.Singular;
 import lombok.experimental.SuperBuilder;

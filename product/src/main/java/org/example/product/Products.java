@@ -1,6 +1,7 @@
 package org.example.product;
 
 import org.eclipse.microprofile.graphql.GraphQLApi;
+import org.eclipse.microprofile.graphql.Id;
 import org.eclipse.microprofile.graphql.Query;
 
 import javax.ws.rs.NotFoundException;
@@ -12,8 +13,8 @@ public class Products {
     private static final Map<String, Product> PRODUCTS = new HashMap<>();
 
     static {
-        add(Product.builder().id("1").name("Table").description("Elegant designer table with four legs").price(399_99).build());
-        add(Product.builder().id("2").name("Chair").description("Nordic design chair with four legs").price(199_99).build());
+        add(Product.builder().id("1").name("Table").description("Elegant designer table with four legs").build());
+        add(Product.builder().id("2").name("Chair").description("Nordic design chair with four legs").build());
     }
 
     private static void add(Product product) {
@@ -21,7 +22,7 @@ public class Products {
     }
 
     @Query
-    public Product product(String id) {
+    public Product product(@Id String id) {
         var product = PRODUCTS.get(id);
         if (product == null)
             throw new NotFoundException("product " + id + " not found");

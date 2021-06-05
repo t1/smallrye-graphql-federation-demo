@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <quarkus.version>2.0.0.Alpha3</quarkus.version>
+        <quarkus.version>2.5.0.Final</quarkus.version>
         <surefire.version>3.0.0-M5</surefire.version>
     </properties>
 
@@ -99,8 +99,8 @@
             <plugin>
                 <groupId>io.quarkus</groupId>
                 <artifactId>quarkus-maven-plugin</artifactId>
-                <version>${quarkus.version}</version>
                 <extensions>true</extensions>
+                <version>${quarkus.version}</version>
                 <executions>
                     <execution>
                         <goals>
