@@ -1,20 +1,23 @@
-const {ApolloServer} = require('apollo-server');
-const {ApolloGateway} = require('@apollo/gateway');
+import {ApolloGateway} from "@apollo/gateway";
+import {ApolloServer, ServerInfo} from "apollo-server";
+import {ApolloServerPluginLandingPageGraphQLPlayground} from "apollo-server-core";
 
 const gateway = new ApolloGateway({
     serviceList: [
-        {name: 'product', url: 'http://127.0.0.1:8082/graphql'},
-        {name: 'order', url: 'http://127.0.0.1:8083/graphql'},
-        {name: 'price', url: 'http://127.0.0.1:8084/graphql'},
+        {name: 'product', url: 'http://localhost:8082/graphql'},
+        // {name: 'order', url: 'http://localhost:8083/graphql'},
+        // {name: 'price', url: 'http://localhost:8084/graphql'},
+        // {name: 'stock', url: 'http://localhost:8085/graphql'},
     ],
 });
 
 const server = new ApolloServer({
     gateway,
-    subscriptions: false,
-    tracing: true
+    plugins: [
+        ApolloServerPluginLandingPageGraphQLPlayground(),
+    ],
 });
 
-server.listen().then(({url}) => {
-    console.log(`🚀 Gateway ready at ${url}`);
+server.listen().then((serverInfo: ServerInfo) => {
+    console.log(`🚀 Gateway ready on ${serverInfo.url}`);
 });

@@ -1,10 +1,10 @@
 package org.example.product;
 
+import jakarta.ws.rs.NotFoundException;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Id;
 import org.eclipse.microprofile.graphql.Query;
 
-import javax.ws.rs.NotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 

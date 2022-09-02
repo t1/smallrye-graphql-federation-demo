@@ -1,10 +1,10 @@
 package org.example.order;
 
+import jakarta.ws.rs.NotFoundException;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.graphql.Source;
 
-import javax.ws.rs.NotFoundException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
