@@ -4,7 +4,7 @@
   "description": "GraphQL Schema Federation Example: https://medium.com/swlh/graphql-schema-federation-with-apollo-typescript-and-node-js-7aa6b0ae06",
   "license": "Apache-2.0",
   "scripts": {
-    "start-gateway": "ts-node gateway"
+    "start": "ts-node gateway"
   },
   "dependencies": {
     "@apollo/federation": "^0.36.1",

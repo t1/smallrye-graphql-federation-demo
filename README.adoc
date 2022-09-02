@@ -1,0 +1,18 @@
+= SmallRye GraphQL Federation Demo
+
+This is a little demo project to show the GraphQL Federation backend support in https://github.com/smallrye/smallrye-graphql[SmallRye GraphQL], which is currently being developed.
+
+== Parts
+
+* `product` GraphQL backend `war`: serves the name and the description.
+* `price` GraphQL backend `war`: extends the product by a price.
+* `order` GraphQL backend `war`: uses products for the order items.
+* `gateway` GraphQL Federation server: combines the three backends into One API.
+* `printer` Quarkus GraphQL CLI client: calls the gateway to print an order with all details.
+
+
+The `war` files currently include the SmallRye GraphQL libraries in version 2.0.0-SNAPSHOT. You can deploy them to an Jakarta EE 9.0 server, e.g. https://www.wildfly.org/downloads/[WildFly 27] (currently 27.0.0.Alpha4).
+
+Start the `gateway` with `yarn install` and `yarn start`.
+
+Finally run `mvn verify` in the `printer` module.
