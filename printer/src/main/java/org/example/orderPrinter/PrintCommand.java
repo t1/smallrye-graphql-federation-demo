@@ -5,7 +5,7 @@ import io.quarkus.runtime.annotations.QuarkusMain;
 import io.smallrye.graphql.client.typesafe.api.GraphQLClientApi;
 import org.eclipse.microprofile.graphql.Query;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.util.stream.Stream;
 
 @QuarkusMain

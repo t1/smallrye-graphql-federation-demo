@@ -5,7 +5,7 @@ import org.example.orderPrinter.PrintCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
