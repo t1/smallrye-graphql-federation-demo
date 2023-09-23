@@ -24,4 +24,6 @@ jobs:
           node-version: '16'
           cache: 'yarn'
 
+      - run: yarn install --frozen-lockfile --cwd gateway
+
       - run: mvn --batch-mode --show-version --no-transfer-progress -DCI=GitHub install
