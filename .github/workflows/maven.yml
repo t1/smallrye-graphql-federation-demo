@@ -22,9 +22,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'yarn'
-          args: --cwd gateway
 
-      - run: yarn install --cwd gateway --frozen-lockfile
+      - run: yarn install --cwd gateway --frozen-lockfile --immutable
 
       - run: mvn --batch-mode --show-version --no-transfer-progress -DCI=GitHub install
