@@ -8,6 +8,8 @@
     <artifactId>ddd-and-graphql</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <description>Demo project to show the GraphQL Federation backend support in SmallRye GraphQL</description>
+    <url>https://github.com/t1/smallrye-graphql-federation-demo</url>
 
     <modules>
         <module>product</module>

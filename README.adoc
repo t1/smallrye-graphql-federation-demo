@@ -1,4 +1,4 @@
-= SmallRye GraphQL Federation Demo
+= SmallRye GraphQL Federation Demo image:https://github.com/t1/smallrye-graphql-federation-demo/actions/workflows/maven.yml/badge.svg[link=https://github.com/t1/smallrye-graphql-federation-demo/actions/workflows/maven.yml]
 
 This is a little demo project to show the GraphQL Federation backend support in https://github.com/smallrye/smallrye-graphql[SmallRye GraphQL], which is currently being developed.
 
