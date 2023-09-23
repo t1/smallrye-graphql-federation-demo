@@ -35,9 +35,9 @@ class PrinterIT {
 
     static List<BufferedWriter> writers = new ArrayList<>();
     // we don't use the @Container annotation, so we can start the containers in parallel
-    static JeeContainer PRODUCT = container("product", 8082);
-    static JeeContainer ORDER = container("order", 8083);
-    static JeeContainer PRICE = container("price", 8084);
+    static JeeContainer PRODUCT = container("product", 18482);
+    static JeeContainer ORDER = container("order", 18483);
+    static JeeContainer PRICE = container("price", 18484);
 
     static Process gateway;
     static Path gatewayOut = log("gateway-out");
