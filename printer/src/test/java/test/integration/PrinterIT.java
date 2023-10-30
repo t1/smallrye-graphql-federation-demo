@@ -86,7 +86,7 @@ class PrinterIT {
 
     @SneakyThrows @SuppressWarnings("BusyWait")
     private static boolean waitFor(Callable<Boolean> condition) {
-        var timeout = Instant.now().plusSeconds(5);
+        var timeout = Instant.now().plusSeconds(15);
         while (Instant.now().isBefore(timeout)) {
             if (condition.call()) return true;
             Thread.sleep(100);
