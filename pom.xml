@@ -28,7 +28,7 @@
 
         <quarkus.version>2.5.0.Final</quarkus.version>
         <smallrye-graphql.version>2.6.1</smallrye-graphql.version>
-        <surefire.version>3.2.2</surefire.version>
+        <surefire.version>3.2.3</surefire.version>
     </properties>
 
     <dependencies>
