@@ -1,5 +1,6 @@
 package org.example.order;
 
+import io.smallrye.graphql.api.federation.FieldSet;
 import io.smallrye.graphql.api.federation.Key;
 import lombok.Data;
 import lombok.Singular;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Data @SuperBuilder
-@Key(fields = "id")
+@Key(fields = @FieldSet("id"))
 public class Order {
     private String id;
     private LocalDate orderDate;
