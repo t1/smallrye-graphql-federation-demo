@@ -50,7 +50,7 @@ class PrinterIT {
         var log = Files.newBufferedWriter(log(deployable));
         writers.add(log);
 
-        return JeeContainer.create("rdohna/wildfly:29.0-jdk17-graphql")
+        return JeeContainer.create("rdohna/wildfly:31.0-jdk17-graphql")
                 .withDeployment("../" + deployable + "/target/ROOT.war")
                 .withMainPortBoundToFixedPort(hostPort)
                 .withLogConsumer(frame -> append(frame, log));
