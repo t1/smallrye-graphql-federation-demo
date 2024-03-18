@@ -1,6 +1,6 @@
 import {ApolloGateway} from "@apollo/gateway";
-import {ApolloServer, ServerInfo} from "apollo-server";
-import {ApolloServerPluginLandingPageGraphQLPlayground} from "apollo-server-core";
+import {ApolloServer} from "@apollo/server";
+import {startStandaloneServer} from "@apollo/server/standalone";
 
 const gateway = new ApolloGateway({
     serviceList: [
@@ -11,13 +11,10 @@ const gateway = new ApolloGateway({
     ],
 });
 
-const server = new ApolloServer({
-    gateway,
-    plugins: [
-        ApolloServerPluginLandingPageGraphQLPlayground(),
-    ],
-});
+const server = new ApolloServer({gateway});
 
-server.listen().then((serverInfo: ServerInfo) => {
-    console.log(`🚀 Gateway ready on ${serverInfo.url}`);
+const { url } = await startStandaloneServer(server, {
+    context: async ({ req }) => ({ token: req.headers.token }),
+    listen: { port: 4000 },
 });
+console.log(`🚀 GraphQL Gateway ready at ${url}`);
