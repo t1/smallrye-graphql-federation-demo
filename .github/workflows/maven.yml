@@ -19,10 +19,5 @@ jobs:
           distribution: 'temurin'
           java-version: ${{ matrix.jdk }}
           cache: 'maven'
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '16'
-
-      - run: yarn install --cwd gateway --frozen-lockfile --immutable
 
       - run: mvn --batch-mode --show-version --no-transfer-progress -DCI=GitHub install
