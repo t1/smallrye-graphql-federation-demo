@@ -7,6 +7,6 @@ echo Running on "${UNAME}"
 
 case "${UNAME}" in
   "Darwin arm64"*) ./router@$VERSION-darwin-arm64;;
-  "Linux amd64"*) ./router@$VERSION-darwin-amd64;;
+  "Linux x86_64"*) ./router@$VERSION-darwin-amd64;;
   *) echo Unsupported Platform: "${UNAME}";;
 esac
