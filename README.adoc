@@ -7,7 +7,7 @@ This is a little demo project to show the GraphQL Federation backend support in 
 * `product` GraphQL backend `war`: serves the name and the description.
 * `price` GraphQL backend `war`: extends the product by a price.
 * `order` GraphQL backend `war`: uses products for the order items.
-* `gateway` GraphQL Federation server: combines the three backends into One API.
+* `gateway` GraphQL Federation server: combines the three backends (subgraphs) into One API (supergraph).
 * `printer` Quarkus GraphQL CLI client: calls the gateway to print an order with all details.
 
 == Test & Run
@@ -16,4 +16,45 @@ Just run `mvn verify`.
 
 But you can deploy the three `war` files to any https://jakarta.ee[Jakarta EE 10] server with https://github.com/eclipse/microprofile-graphql[MicroProfile GraphQL] support, e.g. https://www.wildfly.org/downloads/[WildFly] with the https://github.com/wildfly-extras/wildfly-graphql-feature-pack[GraphQL Feature Pack]. We use my WildFly Docker Image `rdohna/wildfly:latest` via https://github.com/t1/jee-testcontainers[JEE Testcontainers].
 
-To start the `gateway`, run `yarn install` and `yarn start`.
+The `gateway` uses https://wundergraph.com[Wundergraph]. To start it, run:
+
+[source,bash]
+----
+./gateway/router
+----
+
+Then the UI runs on http://localhost:3002 and you can execute, e.g.:
+
+[source,graphql]
+----
+query order1 {
+  order(id:"1") {
+    customerNumber
+    customerName
+    orderDate
+    orderItems {
+      position
+      amount
+      product {
+        name
+        description
+        price
+      }
+    }
+  }
+}
+----
+
+If you change the schema, you'll have to regenerate the `config.json`. You'll need `wgc` for that:
+
+[source,bash]
+----
+npm install -g wgc@latest
+----
+
+Then run (while the three services are running):
+
+[source,bash]
+----
+wgc router compose -i compose.yaml -o config.json
+----

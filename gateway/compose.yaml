@@ -1,0 +1,14 @@
+version: 1
+subgraphs:
+  - name: product
+    routing_url: http://localhost:18482/graphql
+    introspection:
+      url: http://localhost:18482/graphql
+  - name: order
+    routing_url: http://localhost:18483/graphql
+    introspection:
+      url: http://localhost:18483/graphql
+  - name: price
+    routing_url: http://localhost:18484/graphql
+    introspection:
+      url: http://localhost:18484/graphql

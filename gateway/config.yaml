@@ -1,0 +1,5 @@
+dev_mode: true
+router_config_path: config.json
+graph:
+  # Result of `wgc router token create`. Can be omitted for local testing.
+  # token: ""

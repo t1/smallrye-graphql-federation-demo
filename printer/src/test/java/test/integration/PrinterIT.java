@@ -75,12 +75,12 @@ class PrinterIT {
 
     @SneakyThrows(IOException.class)
     private static void startFederationGateway() {
-        gateway = new ProcessBuilder("yarn", "run", "start")
+        gateway = new ProcessBuilder("./router")
                 .directory(Path.of("../gateway").toFile())
                 .redirectOutput(gatewayOut.toFile())
                 .redirectError(gatewayErr.toFile())
                 .start();
-        var ready = waitFor(() -> Files.readString(gatewayOut).contains("Gateway ready"));
+        var ready = waitFor(() -> Files.readString(gatewayOut).contains("Server listening"));
         if (!ready) throw new IllegalStateException("gateway not ready");
     }
 

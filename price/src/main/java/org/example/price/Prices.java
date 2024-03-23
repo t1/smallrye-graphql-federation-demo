@@ -16,7 +16,7 @@ public class Prices {
     private static final Map<String, Integer> PRICES = Map.of("1", 399_99, "2", 199_99);
 
     @Query
-    public List<Product> products(List<String> ids) {
+    public List<Product> productPrices(List<String> ids) {
         log.info("get prices for products({})", ids);
         var products = ids.stream().map(Prices::get).collect(toList());
         log.info("found prices: {}", products);
@@ -24,7 +24,7 @@ public class Prices {
     }
 
     @Query
-    public Product product(@Id String id) {
+    public Product productPrice(@Id String id) {
         log.info("get price for product({})", id);
         var product = get(id);
         log.info("found price: {}", product);
