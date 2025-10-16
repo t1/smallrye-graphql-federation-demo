@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <quarkus.version>3.28.3</quarkus.version>
+        <quarkus.version>3.28.4</quarkus.version>
         <surefire.version>3.5.4</surefire.version>
     </properties>
 
