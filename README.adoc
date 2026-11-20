@@ -20,7 +20,7 @@ The `gateway` uses https://wundergraph.com[Wundergraph]. To start it, run:
 
 [source,bash]
 ----
-./gateway/router
+./gateway/gateway
 ----
 
 Then the UI runs on http://localhost:3002 and you can execute, e.g.:
