@@ -16,7 +16,7 @@
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <quarkus.version>3.40.1.2</quarkus.version>
+        <quarkus.version>4.0.0</quarkus.version>
         <surefire.version>3.6.1</surefire.version>
         <lombok.version>1.18.48</lombok.version>
     </properties>
