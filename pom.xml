@@ -27,7 +27,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
 
         <quarkus.version>2.5.0.Final</quarkus.version>
-        <smallrye-graphql.version>2.18.6</smallrye-graphql.version>
+        <smallrye-graphql.version>3.0.0</smallrye-graphql.version>
         <surefire.version>3.6.1</surefire.version>
         <lombok.version>1.18.48</lombok.version>
     </properties>
