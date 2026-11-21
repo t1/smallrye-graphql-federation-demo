@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd "$(dirname "$0")" || exit
+
+case "${GRAPHQL_GATEWAY:-wundergraph}" in
+  the-guild-conductor) exec ./the-guild-conductor/conductor ;;
+  wundergraph)         exec ./wundergraph/router ;;
+  *) echo "unknown GRAPHQL_GATEWAY=${GRAPHQL_GATEWAY}. Expected: wundergraph | the-guild-conductor" >&2; exit 1 ;;
+esac

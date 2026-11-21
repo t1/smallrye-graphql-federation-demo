@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd "$(dirname "$0")" || exit
+
+UNAME="$(uname -sm)"
+VERSION="0.76.0"
+
+echo Running on "${UNAME}"
+
+case "${UNAME}" in
+  "Darwin arm64"*) exec ./router@$VERSION-darwin-arm64 ;;
+  "Linux x86_64"*)  exec ./router@$VERSION-linux-amd64 ;;
+  *) echo Unsupported Platform: "${UNAME}"; exit 1 ;;
+esac

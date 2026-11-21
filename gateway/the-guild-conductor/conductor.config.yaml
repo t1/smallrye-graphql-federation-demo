@@ -1,0 +1,16 @@
+server:
+  port: 3002
+logger:
+  filter: debug
+sources:
+  - id: federation
+    type: federation
+    config:
+      expose_query_plan: true
+      supergraph:
+        file: ./supergraph.graphql
+endpoints:
+  - path: /graphql
+    from: federation
+    plugins:
+      - type: graphiql

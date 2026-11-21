@@ -42,3 +42,4 @@ nb-configuration.xml
 .env
 
 /gateway/dist/
+/.pi/settings/jdtls.json

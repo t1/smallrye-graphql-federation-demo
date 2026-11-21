@@ -58,3 +58,26 @@ Then run (while the three services are running):
 ----
 wgc router compose -i compose.yaml -o config.json
 ----
+
+== Alternative Gateway: The Guild Conductor
+
+The gateway can be switched at runtime via the `GRAPHQL_GATEWAY` environment variable:
+
+[source,bash]
+----
+GRAPHQL_GATEWAY=wundergraph ./gateway/gateway        # default
+GRAPHQL_GATEWAY=the-guild-conductor ./gateway/gateway
+----
+
+=== Findings: Conductor Federation Support
+
+https://github.com/the-guild-org/conductor[The Guild Conductor] (v0.0.6-alpha.5 and v1.0.5) supports Apollo Federation supergraph SDL and can plan queries across multiple subgraphs (including `_entities` resolution). However, its federation query planner has a known limitation:
+
+[quote]
+____
+Field arguments on root query fields are dropped when generating sub-queries. The source (`libs/federation_query_planner/src/graphql_query_builder.rs`) contains `// TODO: add arguments` — the generated sub-query is `{ order { ... } }` instead of `{ order(id: "1") { ... } }`. This was confirmed by proxying the upstream request: conductor sent `{"query":"{ order { id orderNumber customerName __typename } }","variables":{}}` to the order subgraph.
+____
+
+As a result, any query that relies on arguments to root fields (like `order(id: "1")`) returns `null` from the subgraph. Conductor is therefore not a drop-in replacement for WunderGraph Router in this demo.
+
+The Conductor config lives in `gateway/the-guild-conductor/conductor.config.yaml` and the composed supergraph SDL in `gateway/the-guild-conductor/supergraph.graphql` (generated via `@apollo/composition` from the subgraph `_service.sdl` introspection results).
